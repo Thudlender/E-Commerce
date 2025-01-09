@@ -13,7 +13,7 @@ const Home = () => {
         <Service/>
         <Testimonnials/>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -22,7 +22,7 @@ const Banner = () => {
         </div>
         <div className="md:w-1/2 space-y-7 px-4">
           <h2 className="md:text-4xl text-4xl font-bond md:leading-sung leading-sung">
-            Discover Uniqe
+            Discover Uniq
             <span className="text-red">Software Engineering Swag</span> for Every Coding Enthusiat 
           </h2>
           <p className="text-xl text-[#4A4A4A]">

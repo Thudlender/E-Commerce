@@ -1,0 +1,18 @@
+[
+    {
+        "_id": "1",
+        "name": "Coding Keyboard",
+        "description": "Mechanical Keyboard optimized for coding with customizable keycaps",
+        "price": 3500,
+        "image": "",
+        "category": "gadget"
+    },
+    {
+        "_id": "2",
+        "name": "Smart Watch",
+        "description": "Stylish smartwatch with fitness tracking and notification features",
+        "price": 4500,
+        "image": "",
+        "category": "gadget"
+    }
+]

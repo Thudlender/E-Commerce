@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
 import ProductService from "../../services/product.service";
 import Card from "../../components/Card";
-
+import { useSearchParams } from "react-router";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [sortOption, setSortOption] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchParams, setSearchParams] = useSearchParams();
   const [itemsPerPage, setFiltered, setItemsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const categoryQuery = searchParams.get("category") || "all";
+  const itemsPerPageQuery = searchParams.get("itemsPerPage") || 4;
+  useEffect(() => {
+    setSelectedCategory(categoryQuery);
+    setItemsPerPage(itemsPerPageQuery);
+  }, [categoryQuery]);
   useEffect(() => {
     const fetchData = async () => {
       const response = await ProductService.getAllProducts();
@@ -32,6 +38,7 @@ const ProductList = () => {
         : products.filter((item) => item.category === category);
     setFilteredItems(filtered);
     handleSortChange(sortOption, filtered);
+    setSearchParams({ ["category"]:category });
     setSelectedCategory(category);
   };
 
@@ -90,9 +97,30 @@ const ProductList = () => {
               id="sortOption"
               className="bg-black text-white px-2 rounded-sm"
               onChange={(e) => handleSortChange(e.target.value, filteredItems)}
-            ></select>
+            >
+              <option value="default">Default</option>
+              <option value="a-z">A-Z</option>
+              <option value="z-a">Z-A</option>
+              <option value="low-to-high">Low to High</option>
+              <option value="high-to-low">High to low</option>
+            </select>
           </div>
         </div>
+        {/** Product list */}
+        <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4">
+          {currentItems.length > 0 && currentItems.map((item, index) => {
+            return <Card key={index} item={item} />;
+          })}
+        </div>
+      </div>
+      {/** Pagination */}
+      <div className="section-container flex flex-row items-center justify-center my-8 flex-wrap gap-2">
+        {Array.from({length: Math.ceil(filterItems.length / itemsPerPage),
+        }).map((_, index) => (
+          <button key={index} className={`mx-1 px-3 py-1 rounded-full ${
+            currentPage === index + 1 ? "bg-red"
+          }`}></button>
+        ))}
       </div>
     </div>
   );

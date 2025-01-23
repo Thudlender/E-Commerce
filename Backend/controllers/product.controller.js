@@ -4,6 +4,32 @@ require("dotenv").config();
 const secret = process.env.SECRET;
 
 exports.createProduct = async (req, res) => {
+  /**
+   #swagger.tags = ['Product']
+   #swagger.summary = "Create a new product"
+   #swagger.description = 'Endpoint to create a new product'
+   #swagger.consumes = ['multipart/form-data']
+   #swagger.parameters['file'] = {
+      in:'formData',
+      type:'file',
+      required:true,
+      description:'Image to upload to Firebase Storage and get its url'
+   }
+   #swagger.requestBody = {
+      required:true,
+      content:{
+        "multipart/form-data":{
+          schema:{
+            $ref:"components/schemas/NewProduct"
+          }
+        }
+      }
+   } 
+   #swagger.response[200] = {
+      schema:{ "$ref": "#components/schemas/ProductResponse"},
+      desciption: "Product created successsfully"
+   }
+   */
   //File upload
   // console.log(req.file);
   if (!req.file) {

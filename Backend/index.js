@@ -9,6 +9,9 @@ const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 const userRouter = require("./routers/user.router");
 const productRouter = require("./routers/product.router");
+const swaggerDocument = require("./docs/swagger-output.json")
+const swaggerUi = require("swagger-ui-express");
+const mongoose = require("mongoose");
 
 //Connect to Mongo DB
 const mongoose = require('mongoose');
@@ -26,6 +29,7 @@ app.get("/", (req, res) => {
 });
 
 //use Router
+app.use("api-doc", swaggerUi.serve, (swaggerDocument));
 app.use("/api/v1/auth", userRouter);
 app.use("/api/v1/post", productRouter);
 

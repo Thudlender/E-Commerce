@@ -9,9 +9,9 @@ const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 const userRouter = require("./routers/user.router");
 const productRouter = require("./routers/product.router");
-const swaggerDocument = require("./docs/swagger-output.json")
+const cartRouter = require("./routers/cart.router");
+const swaggerDocument = require("./docs/swagger-output.json");
 const swaggerUi = require("swagger-ui-express");
-const mongoose = require("mongoose");
 
 //Connect to Mongo DB
 const mongoose = require('mongoose');
@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
 app.use("api-doc", swaggerUi.serve, (swaggerDocument));
 app.use("/api/v1/auth", userRouter);
 app.use("/api/v1/post", productRouter);
+app.use("/api/v1/cart", cartRouter);
 
 app.listen(PORT, () => {
   console.log("Server is running on http://localhost:" + PORT);

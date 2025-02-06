@@ -1,6 +1,8 @@
-import React from "react";
+import Profile from "./Profile";
+import { Auth }
 
 const Navbar = () => {
+  const
   const navItems = (
     <>
       <li>

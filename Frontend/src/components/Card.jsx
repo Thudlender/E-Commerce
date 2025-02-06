@@ -1,11 +1,58 @@
 import React, { useState } from 'react'
+import CartService from '../services/cart.service';
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
+import useCart from '../hooks/useCart';
+import Swal from "sweetalert2";
+
 const Card = () => {
     const { _id, name, image, description, category, price } = item;
-    const [isHeartFilled, setIsHeartFilled] = useState
+    const {user} = useContext(AuthContext);
+    const [refetch] = useCart();
+    const [isHeartFilled, setIsHeartFilled] = useState(false);
     (false);
     const handleHeartClick = () => {
         setIsHeartFilled(!isHeartFilled);
     };
+    const handleAddToCart = async () => {
+      if(!user || !user.email){
+        Swal.fire({
+          icon:'error',
+          title:"Oops...",
+          text: "Please login to add cart!",
+        });
+        return;
+      }
+      try {
+        const cartItem = {
+          productId:_id,
+          email:user.email,
+          quantity:1,
+          name,
+          price,
+          image,
+        };
+        const response = await CartService.createCartItem(cartItem);
+        if(response.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Item added to cart",
+            timer: 1500,
+            showCancelButton: false,
+          });
+          refetch();
+        }
+
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
+      }
+    }
+
   return (
     <div className="card shadow-xl relative mr-5 md:my-5 h-120">
       <div

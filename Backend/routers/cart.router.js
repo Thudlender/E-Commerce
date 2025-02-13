@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const cartController = require("../controllers/cart.controller");
+const CartController = require("../controllers/cart.controller");
 //http://localhost:5000/api/v1/post
-router.post("", authJwt.verifyToken, upload, cartController.createProduct);
-//ลบ
-//http://localhost:5000/api/v1/post/32132123131
-router.delete("/:id", authJwt.verifyToken, cartController.deleteCart);
+router.post("/", CartController.createCart);
+router.get("/", CartController.getAllCartItems)
+router.get("/:email", CartController.getCartItemsByEmail);
+router.put("/:id", CartController.updateCartItem);
+router.delete("/:id", CartController.deleteCartItemById);
+router.delete("/clear/:email", CartController.clearAllItems);
+
 module.exports = router;

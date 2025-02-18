@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.send("<h1>Welcome to SE NPRU Blog Restful API</h1>");
 });
 
-app.use("/uploads", express.static(_dirname + "/uploads"));
+// app.use("/uploads", express.static(_dirname + "/uploads"));
 
 //use Router
 app.use("api-doc", swaggerUi.serve, swaggerUi.setup (swaggerDocument));

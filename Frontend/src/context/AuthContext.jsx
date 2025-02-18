@@ -2,15 +2,22 @@ import { createContext, useState, useEffect } from "react";
 export const AuthContext = createContext();
 import app from "../configs/firebase.config";
 import {
-    createUserWithEmailAndPassword,
-    getAuth,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    signOut,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  FacebookAuthProvider,
+  updateProfile,
 } from "firebase/auth";
+import { set } from "react-hook-form";
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
     const auth = getAuth(app);
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -46,14 +53,15 @@ const AuthProvider = ({ children }) => {
     };
 
     const authInfo = {
-        user,
-        createUser,
-        login,
-        logout,
-        signUpWithGoogle,
-        signUpWithGithub,
-        signUpWithFacebook,
-        updateUserProfile,
+      user,
+      createUser,
+      login,
+      logout,
+      signUpWithGoogle,
+      signUpWithGithub,
+      signUpWithFacebook,
+      updateUserProfile,
+      isLoading,
     };
     
     //check if user is logged in
@@ -62,7 +70,9 @@ const AuthProvider = ({ children }) => {
             setUser(user);
             if (currentUser) {
                 setUser(currentUser);
+                setIsLoading(false);
             }
+            setIsLoading(false);
         });
         return () => {
             return unsubscripe();

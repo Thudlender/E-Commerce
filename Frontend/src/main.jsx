@@ -4,7 +4,7 @@ import './index.css'
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthProvider from "./context/AuthContext.jsx";
 import { RouterProvider } from "react-router"; 
-import router from '../../Backend/routers/cart.router.js'
+import router from './routers/Router.jsx';
 // Create a client 
 const queryClient = new QueryClient();
 createRoot(document.getElementById('root')).render(

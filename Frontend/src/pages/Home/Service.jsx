@@ -1,27 +1,27 @@
-import React from 'react'
+import { useState } from "react";
 const serviceList = [
   {
     id:1,
     title:"High-Quality Products",
-    description:" We offer blablablablablablabla"
+    description:" We offer blablablablablablabla",
     image:"/images/home/services/assurance.png",
   },
   {
     id:1,
     title:"High-Quality Products",
-    description:" We offer blablablablablablabla"
+    description:" We offer blablablablablablabla",
     image:"/images/home/services/assurance.png",
   },
   {
     id:1,
     title:"High-Quality Products",
-    description:" We offer blablablablablablabla"
+    description:" We offer blablablablablablabla",
     image:"/images/home/services/assurance.png",
   },
   {
     id:1,
     title:"High-Quality Products",
-    description:" We offer blablablablablablabla"
+    description:" We offer blablablablablablabla",
     image:"/images/home/services/assurance.png",
   },
 ]

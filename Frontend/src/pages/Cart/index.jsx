@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import useCart from "../../hooks/useCart";
-import { FaTrash } from "react-icons/fa";
+import { TbTrashFilled } from "react-icons/tb";
 import CartService from "../../services/cart.service";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthContext";
@@ -106,8 +106,9 @@ const index = () => {
                   <th>Price Per Unit</th>
                   <th>Price</th>
                   <th>
-                    <button className="btn btn-outline btn-error"
-                    onClick={handleClearCart}
+                    <button
+                      className="btn btn-outline btn-error"
+                      onClick={handleClearCart}
                     >
                       Clear Cart
                     </button>
@@ -134,33 +135,38 @@ const index = () => {
                       <td>
                         <div className="flex items-center gap-3">
                           <div>
-                            <div className="font-bold">{cartItem.name}
-                            </div>
+                            <div className="font-bold">{cartItem.name}</div>
                           </div>
                         </div>
                       </td>
                       <td>
                         <div className="space-x-6 text-center">
-                          <button className="btn btn-xs mr-6" onClick={handleDecrease}
+                          <button
+                            className="btn btn-xs mr-6"
+                            onClick={handleDecrease}
                           >
                             -
                           </button>
                           {cartItem.quantity}
-                          <button className="btn btn-xs mr-2" onClick={handleIncrease}
+                          <button
+                            className="btn btn-xs mr-2"
+                            onClick={handleIncrease}
                           >
                             +
                           </button>
                         </div>
                       </td>
                       <td className="text-center">{cartItem.price}</td>
-                      <td className="text-center">{cartItem.quantity * cartItem.price}</td>
-                      <td className="text-center"><button onClick={() => handleDeleteItem(cartItem)}>
-                        <FaTrash/>
+                      <td className="text-center">
+                        {cartItem.quantity * cartItem.price}
+                      </td>
+                      <td className="text-center">
+                        <button onClick={() => handleDeleteItem(cartItem)}>
+                          <TbTrashFilled />
                         </button>
                       </td>
                     </tr>
-                  ))
-                }
+                  ))}
               </tbody>
               {/* foot */}
               <tfoot>
@@ -183,7 +189,7 @@ const index = () => {
         ) : (
           <div className="text-xl font-bold text-center text-red">
             Shopping cart is Empty!
-          </div> 
+          </div>
         )}
       </div>
     </div>

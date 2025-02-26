@@ -1,8 +1,9 @@
 import Profile from "./Profile";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../contexts/auth.context";
 import useCart from "../hooks/useCart";
 import Modal from "./Modal";
+import UserIcon from "./icons/UserIcon";
 // import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {

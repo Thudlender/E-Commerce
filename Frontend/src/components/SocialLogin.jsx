@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-// import GoogleWordmark from "./icons/GoogleIcon";
-// import { DiGithubFull } from "react-icons/di";
-// import { CiFacebook } from "react-icons/ci";
-import { AuthContext } from "../context/AuthContext";
+import { IoLogoFacebook } from "react-icons/io5";
+import { GrGithub } from "react-icons/gr";
+import { GrGoogle } from "react-icons/gr";
+
+import { AuthContext } from "../contexts/auth.context";
 import Swal from "sweetalert2";
 import { useNavigate, useLocation } from "react-router";
 
@@ -77,19 +78,19 @@ const SocialLogin = ({ name }) => {
           className="btn btn-ghost btn-circle hover:bg-red"
           onClick={googleSignUp}
         >
-          <GoogleWordmark className="w-8 h-8" />
+          <GrGoogle className="w-8 h-8" />
         </button>
         <button
           className="btn btn-ghost btn-circle hover:bg-red"
           onClick={githubSignUp}
         >
-          <DiGithubFull className="w-8 h-8" />
+          <GrGithub className="w-8 h-8" />
         </button>
         <button
           className="btn btn-ghost btn-circle hover:bg-red"
           onClick={facebookSignUp}
         >
-          <CiFacebook className="w-8 h-8" />
+          <IoLogoFacebook className="w-8 h-8" />
         </button>
       </div>
     </>

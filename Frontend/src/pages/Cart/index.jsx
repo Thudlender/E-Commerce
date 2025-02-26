@@ -3,7 +3,7 @@ import useCart from "../../hooks/useCart";
 import { TbTrashFilled } from "react-icons/tb";
 import CartService from "../../services/cart.service";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../contexts/auth.context";
 
 const index = () => {
   const [cart, refetch] = useCart();
@@ -67,7 +67,7 @@ const index = () => {
               timer: 2000,
             });
           }
-        }catch (error) {
+        } catch (error) {
           Swal.fire({
             icon: "error",
             title: "Error",

@@ -1,5 +1,5 @@
 import api from "./api";
-const API_URL = "/cart";
+const API_URL = "/cartItems";
 
 const getAllCartItems = async () => {
     return await api.get(`${API_URL}`);

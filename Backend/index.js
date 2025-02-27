@@ -10,6 +10,7 @@ const DB_URL = process.env.DB_URL;
 const userRouter = require("./routers/user.router");
 const productRouter = require("./routers/product.router");
 const cartRouter = require("./routers/cart.router");
+const stripeRouter = require("./routers/stripe.router");
 const swaggerDocument = require("./docs/swagger-output.json");
 const swaggerUi = require("swagger-ui-express");
 
@@ -35,6 +36,7 @@ app.use("api-doc", swaggerUi.serve, swaggerUi.setup (swaggerDocument));
 app.use("/api/v1/auth", userRouter);
 app.use("/api/v1/post", productRouter);
 app.use("/api/v1/cart", cartRouter);
+app.use("/api/v1/stripe", stripeRouter);
 
 app.listen(PORT, () => {
   console.log("Server is running on http://localhost:" + PORT);

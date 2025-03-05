@@ -1,7 +1,7 @@
 import React from 'react'
 import "./style.css";
 const Index = () => {
-    //clear caert logic
+    //clear create logic
     return (
         <div className="checkout-success">
         <h2>Check out success</h2>

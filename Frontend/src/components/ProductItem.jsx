@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ProductItem = ({ image, name, price, rating }) => {
   return (
@@ -46,7 +46,7 @@ const ProductItem = ({ image, name, price, rating }) => {
             defaultChecked={rating == 5 ? true : false}
           />
         </div>
-        <p className="text-red">price $</p>
+        <p className="text-red">{price}</p>
       </div>
     </div>
   );

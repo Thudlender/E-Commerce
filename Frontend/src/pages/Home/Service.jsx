@@ -1,33 +1,35 @@
 import { useState } from "react";
 const serviceList = [
   {
-    id:1,
-    title:"High-Quality Products",
-    description:" We offer blablablablablablabla",
-    image:"/images/home/services/assurance.png",
+    id: 1,
+    title: "High-Quality Products",
+    description:
+      "We provide high-quality products to our customers. We have a wide range of products in different categories.",
+    image: "/images/home/services/assurance.png",
   },
   {
-    id:1,
-    title:"High-Quality Products",
-    description:" We offer blablablablablablabla",
-    image:"/images/home/services/assurance.png",
+    id: 2,
+    title: "Fast Delivery",
+    description: "We deliver your order promptly to your door",
+    image: "/images/home/services/fast-delivery.png",
   },
   {
-    id:1,
-    title:"High-Quality Products",
-    description:" We offer blablablablablablabla",
-    image:"/images/home/services/assurance.png",
+    id: 3,
+    title: "Online Ordering",
+    description:
+      "Explore products & order with ease using our Online Ordering n",
+    image: "/images/home/services/order.png",
   },
   {
-    id:1,
-    title:"High-Quality Products",
-    description:" We offer blablablablablablabla",
-    image:"/images/home/services/assurance.png",
+    id: 4,
+    title: "Gift Cards",
+    description: "Give the gift of exceptional dining with SE Shop Gift Cards",
+    image: "/images/home/services/gift.png",
   },
-]
+];
 
 const Service = () => {
-  const [mySevices, setMyServices] = useState(serviceList);
+  const [myServices, setMyServices] = useState(serviceList);
   return (
     <div className='section-container my-16'>
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -43,8 +45,8 @@ const Service = () => {
         </div>
        <div className='md:w-1/2'>
         <div className='grid sm:grid-cols-1 gap-8 item-center'>
-          {mySevices.lenght > 0 &&
-            mySevices.map((item) => {
+          {myServices.length > 0 &&
+            myServices.map((item) => {
               return (
                 <div 
                  key={item.id}

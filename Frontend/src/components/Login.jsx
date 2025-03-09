@@ -7,7 +7,7 @@ import { AuthContext } from "../contexts/auth.context";
 import Swal from "sweetalert2";
 import { useNavigate, useLocation } from "react-router";
 
-const SocialLogin = ({ name }) => {
+const Login = ({ name }) => {
   const { signUpWithGoogle, signUpWithGithub, signUpWithFacebook } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -97,4 +97,4 @@ const SocialLogin = ({ name }) => {
   );
 };
 
-export default SocialLogin;
+export default Login;

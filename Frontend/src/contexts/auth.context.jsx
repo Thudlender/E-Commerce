@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { Cookies } from "react-cookie";
 export const AuthContext = createContext();
 import app from "../configs/firebase.config";
-import UserService from "../services/user.server";
+import UserService from "../services/user.service";
 import {
   createUserWithEmailAndPassword,
   getAuth,

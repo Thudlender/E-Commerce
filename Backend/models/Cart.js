@@ -11,6 +11,7 @@ const CartSchema = new Schema(
   },
   {
     timestamps: true,
+    // เพิ่ม timestamps ที่นี่เพื่อให้ mongoose สร้าง field สำหรับเก็บวันที่เวลาที่สร้างและแก้ไขข้อมูลให้เรา
   }
 );
 

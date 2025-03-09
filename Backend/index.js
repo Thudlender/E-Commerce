@@ -11,6 +11,7 @@ const userRouter = require("./routers/user.router");
 const productRouter = require("./routers/product.router");
 const cartRouter = require("./routers/cart.router");
 const stripeRouter = require("./routers/stripe.router");
+const OrderRouter = require("./routers/order.router");
 const swaggerDocument = require("./docs/swagger-output.json");
 const swaggerUi = require("swagger-ui-express");
 
@@ -24,7 +25,9 @@ try {
 }
 
 app.use(cors({ origin: BASE_URL, credentials: true }));
+//ถ้าเกิดเป็น webhook จะต้องใช้ express.raw เพราะ stripe จะส่งข้อมูลมาเป็น raw data
 app.use("api/v1/stripe/webhook",express.raw({type:"application/json"}));
+//credentials คือการส่ง cookie ไปด้วย
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to SE NPRU Blog Restful API</h1>");
@@ -38,6 +41,7 @@ app.use("/api/v1/auth", userRouter);
 app.use("/api/v1/post", productRouter);
 app.use("/api/v1/cart", cartRouter);
 app.use("/api/v1/stripe", stripeRouter);
+app.use("/api/v1/order", OrderRouter);
 
 app.listen(PORT, () => {
   console.log("Server is running on http://localhost:" + PORT);

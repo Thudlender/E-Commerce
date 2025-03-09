@@ -4,7 +4,6 @@ import { AuthContext } from "../contexts/auth.context";
 import useCart from "../hooks/useCart";
 import Modal from "./Modal";
 import UserIcon from "./icons/UserIcon";
-// import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -103,11 +102,11 @@ const Navbar = () => {
           </div>
           <a className="btn btn-ghost text-xl" href="/">
             <img
-              src="/unnamed.png"
+              src="/SEsoftware.png"
               alt="Logo"
               className="h-6 lg:h-12 pr-1 mx-auto"
             />
-            SE Souvenir Shop
+            SE Software Shop
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

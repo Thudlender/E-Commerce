@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../contexts/auth.context";
 import Swal from "sweetalert2";
 import { useNavigate, useLocation } from "react-router";
-import SocialLogin from "./SocialLogin";
+import Login from "./Login";
 
 const Modal = ({ name }) => {
   const { login } = useContext(AuthContext);
@@ -93,7 +93,7 @@ const Modal = ({ name }) => {
                 </a>
               </p>
             </form>
-            <SocialLogin />
+            <Login />
           </div>
         </div>
       </dialog>

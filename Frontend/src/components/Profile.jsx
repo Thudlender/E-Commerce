@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../contexts/auth.context";
 import useCart from "../hooks/useCart";
+import UserService from "../services/user.service";
 
 const Profile = () => {
   const { logout, user } = useContext(AuthContext);
   const [cart, refetch] = useCart();
+  const userInfo = getUser();
+  console.log("user", userInfo);
   return (
     <>
       {" "}
@@ -55,6 +58,11 @@ const Profile = () => {
           <li>
             <a href="/profile">Profile</a>
           </li>
+          {userInfo?.role === "admin" && (
+            <li>
+              <a href="/dashboard">Dashboard</a>
+            </li>
+          )}
           <li>
             <a href="/settings">Settings</a>
           </li>

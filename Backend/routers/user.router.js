@@ -1,42 +1,41 @@
 const express = require("express");
-const router = express.Router(); //เรียกออกมาเป็นฟังก์ชันด้วย
+const router = express.Router();
 const userController = require("../controllers/user.controller");
 const authJwt = require("../middleware/authJwt.middleware");
-// http://localhost:5000/api/v1/user/sign
+
+// sign user token
 router.post("/sign", userController.sign);
-
+// add new user
 router.post("/", userController.addUser);
-
+// get all users
 router.get("/", userController.getAllUsers);
-
-router.get("/role/:email", userController.getRoleByEmail);
-
+// get user by id
+router.get("/:id", userController.getUserById);
+// update user
 router.put(
   "/:id",
-  authJwt.verifyToken,
-  authJwt.isAdmin,
+  [authJwt.verifyToken, authJwt.isAdmin],
   userController.updateUser
 );
-
+// delete user
 router.delete(
   "/:id",
-  authJwt.verifyToken,
-  authJwt.isAdmin,
+  [authJwt.verifyToken, authJwt.isAdmin],
   userController.deleteUser
 );
-
+// make user admin
 router.patch(
-  "/admin/:email",
-  authJwt.verifyToken,
-  authJwt.isAdmin,
+  "/admin/:id",
+  [authJwt.verifyToken, authJwt.isAdmin],
   userController.makeAdmin
 );
-
+// make admin user
 router.patch(
-  "/user/:email",
-  authJwt.verifyToken,
-  authJwt.isAdmin,
+  "/user/:id",
+  [authJwt.verifyToken, authJwt.isAdmin],
   userController.makeUser
 );
+// get role
+router.get("/role/:id", userController.getRoleById);
 
 module.exports = router;
